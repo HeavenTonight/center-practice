@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.yong.center</groupId>
+    <artifactId>center-practice</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>center-practice-client</module>
+        <module>center-practice-web</module>
+    </modules>
+
+    <parent>
+        <groupId>cn.yong</groupId>
+        <artifactId>springcloud-parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <apache.poi.version>3.9</apache.poi.version>
+        <apache.poi.ooxml.version>3.9</apache.poi.ooxml.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.deepexi.common</groupId>
+            <artifactId>optimus-common</artifactId>
+            <version>1.1.7-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.10</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.8</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>ogy_mirror</id>
+            <name>ogy nexus public</name>
+            <url>http://106.55.147.17:8081/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>ogy_mirror</id>
+            <name>ogy nexus SNAPSHOTS</name>
+            <url>http://106.55.147.17:8081/repository/maven-snapshots/</url>
+        </repository>
+    </distributionManagement>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>ogy_mirror_releases</id>
+            <url>http://106.55.147.17:8081/repository/maven-releases/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>ogy_mirror</id>
+            <url>http://106.55.147.17:8081/repository/maven-snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>

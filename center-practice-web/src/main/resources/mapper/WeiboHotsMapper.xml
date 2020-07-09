@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yong.center.practice.infrastructure.mapper.WeiboHotsMapper">
+<select id="pageList" resultType="cn.yong.center.practice.model.dto.WeiboHotsDTO">
+    select * from weibo_hots where dr=0
+    <if test="weiboHotsQuery.hotTop != null">
+        and hot_top = #{weiboHotsQuery.hotTop}
+    </if>
+    <if test="weiboHotsQuery.hotName != null and weiboHotsQuery.hotName !=''">
+        and hot_name LIKE CONCAT('%',#{weiboHotsQuery.hotName},'%')
+    </if>
+    <if test="weiboHotsQuery.hotMark != null and weiboHotsQuery.hotMark !=''">
+        and hot_mark = #{weiboHotsQuery.hotMark}
+    </if>
+    <if test="startTime != null and endTime != null">
+        AND created_time &gt;= #{startTime}
+        AND created_time &lt;= #{endTime}
+    </if>
+    order by hot_update_time desc,hot_top
+</select>
+    <select id="getWeiboHotTopCount" resultType="cn.yong.center.practice.model.dto.WeiboHotCountDTO">
+      SELECT hot_top as hotTop,COUNT(hot_top) as hotTopCount FROM `weibo_hots`  WHERE hot_name=#{hotName} GROUP BY hot_top ORDER BY hot_top;
+    </select>
+
+    <select id="getWeiboHotMarkCount" resultType="cn.yong.center.practice.model.dto.WeiboHotCountDTO">
+        SELECT hot_mark as hotMark,COUNT(hot_mark) as hotMarkCount FROM `weibo_hots`  WHERE hot_name=#{hotName} GROUP BY hot_mark ORDER BY hotMarkCount;
+    </select>
+
+</mapper>

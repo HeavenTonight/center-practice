@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: center-practice
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${discovery.addr:127.0.0.1:8848}
+        enabled: false
+      config:
+        server-addr: ${discovery.addr:127.0.0.1:8848}
+        file-extension: yaml
+        enabled: false
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
