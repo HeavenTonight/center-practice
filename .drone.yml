@@ -1,11 +1,11 @@
 kind: pipeline
 name: drone test
     
-# 代码编译
+# 浠ｇ爜缂栬瘧
 steps:
-- name: build
-  image: maven:3-jdk-10
-  commands:
-    - mvn clean package   # 清洁打包 因为java项目需要编译后才能进行代码扫描
+  - name: build
+    image: maven:3-jdk-10
+    commands:
+      - mvn clean package   # 娓呮磥鎵撳寘 鍥犱负java椤圭洰闇�瑕佺紪璇戝悗鎵嶈兘杩涜浠ｇ爜鎵弿
     when:
       branch: dev
